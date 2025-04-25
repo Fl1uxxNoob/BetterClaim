@@ -1,6 +1,18 @@
 name: BetterClaim
 version: '1.0'
 main: net.fliuxx.betterClaim.BetterClaim
-api-version: '1.21'
+api-version: '1.20'
 authors: [ Fl1uxxNoob ]
 description: Plugin per i claim
+commands:
+  claim:
+    description: Comando principale per gestire i claim
+    aliases: [betterclaim]
+    usage: /claim <claim|unclaim|info|invite|list|help>
+permissions:
+  betterclaim.admin.bypass:
+    description: Permette di bypassare la protezione dei claim
+    default: op
+  betterclaim.claims.unlimited:
+    description: Permette di avere un numero illimitato di claim
+    default: op

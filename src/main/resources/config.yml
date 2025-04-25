@@ -1,0 +1,36 @@
+# Configurazione BetterClaim
+
+# Database
+database:
+  filename: "claims.db"
+
+# Impostazioni generali
+settings:
+  max-claims: 2
+  claim-message: "&aHai claimato questo chunk con successo!"
+  claim-already-exists: "&cQuesto chunk è già stato claimato!"
+  max-claims-reached: "&cHai raggiunto il limite massimo di claim (%max%)!"
+  claim-removed: "&aHai rimosso questo claim con successo!"
+  not-your-claim: "&cQuesto claim non ti appartiene!"
+  no-claim-here: "&cNon c'è nessun claim in questo chunk!"
+
+# Impostazioni inviti
+invite:
+  invite-sent: "&aHai invitato %player% al tuo claim!"
+  invite-received: "&a%player% ti ha invitato al suo claim!"
+  player-not-found: "&cIl giocatore non è online!"
+  already-invited: "&cQuesto giocatore è già stato invitato a questo claim!"
+  player-added: "&aHai aggiunto %player% al tuo claim!"
+
+# Protezioni
+protection:
+  enable-block-break: true
+  enable-block-place: true
+  enable-interact: true
+  enable-explosion: true
+  protection-message: "&cNon hai il permesso per fare questo in questo claim!"
+
+# Permessi
+permissions:
+  admin-bypass: "betterclaim.admin.bypass"
+  claims-unlimited: "betterclaim.claims.unlimited"
