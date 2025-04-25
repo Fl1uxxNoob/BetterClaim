@@ -1,0 +1,6 @@
+name: BetterClaim
+version: '1.0'
+main: net.fliuxx.betterClaim.BetterClaim
+api-version: '1.21'
+authors: [ Fl1uxxNoob ]
+description: Plugin per i claim
