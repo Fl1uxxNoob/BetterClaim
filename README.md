@@ -1,0 +1,2 @@
+# BetterClaim
+Plugin for claim
