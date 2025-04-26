@@ -81,11 +81,11 @@ public class ClaimCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        int maxClaims = plugin.getConfig().getInt("settings.max-claims", 2);
+        int maxChunks = plugin.getConfig().getInt("settings.max-claims", 2);
         if (!player.hasPermission(plugin.getConfig().getString("permissions.claims-unlimited")) &&
-                databaseManager.getPlayerClaimCount(player.getName()) >= maxClaims) {
-            String message = Utils.getMessage("settings.max-claims-reached", "&cHai raggiunto il limite massimo di claim (%max%)!");
-            message = Utils.replacePlaceholders(message, "%max%", String.valueOf(maxClaims));
+                databaseManager.getPlayerChunkCount(player.getName()) >= maxChunks) {
+            String message = Utils.getMessage("settings.max-claims-reached", "&cHai raggiunto il limite massimo di chunk (%max%)!");
+            message = Utils.replacePlaceholders(message, "%max%", String.valueOf(maxChunks));
             player.sendMessage(message);
             return;
         }
@@ -112,9 +112,9 @@ public class ClaimCommand implements CommandExecutor, TabCompleter {
         }
 
         if (databaseManager.removeClaim(player, chunk)) {
-            player.sendMessage(Utils.getMessage("settings.claim-removed", "&aHai rimosso questo claim con successo!"));
+            player.sendMessage(Utils.getMessage("settings.claim-removed", "&aHai rimosso questo chunk con successo!"));
         } else {
-            player.sendMessage(Utils.colorize("&cErrore durante la rimozione del claim. Riprova più tardi."));
+            player.sendMessage(Utils.colorize("&cErrore durante la rimozione del chunk. Riprova più tardi."));
         }
     }
 
@@ -127,12 +127,14 @@ public class ClaimCommand implements CommandExecutor, TabCompleter {
         }
 
         String owner = databaseManager.getChunkOwner(chunk);
-        int claimId = databaseManager.getClaimId(chunk);
-        List<String> members = databaseManager.getClaimMembers(claimId);
+        int regionId = databaseManager.getRegionId(chunk);
+        List<String> members = databaseManager.getRegionMembers(regionId);
+        int chunkCount = databaseManager.getRegionChunks(regionId, chunk.getWorld()).size();
 
         player.sendMessage(Utils.colorize("&a=== Informazioni Claim ==="));
         player.sendMessage(Utils.colorize("&7Posizione: &f" + Utils.getChunkCoordinates(chunk)));
         player.sendMessage(Utils.colorize("&7Proprietario: &f" + owner));
+        player.sendMessage(Utils.colorize("&7Chunks in questa regione: &f" + chunkCount));
 
         if (members.isEmpty()) {
             player.sendMessage(Utils.colorize("&7Membri: &fNessuno"));
@@ -161,13 +163,13 @@ public class ClaimCommand implements CommandExecutor, TabCompleter {
             return;
         }
 
-        int claimId = databaseManager.getClaimId(chunk);
-        if (databaseManager.isPlayerMemberOfClaim(claimId, target.getName())) {
+        int regionId = databaseManager.getRegionId(chunk);
+        if (databaseManager.isPlayerMemberOfRegion(regionId, target.getName())) {
             player.sendMessage(Utils.getMessage("invite.already-invited", "&cQuesto giocatore è già stato invitato a questo claim!"));
             return;
         }
 
-        if (databaseManager.addMemberToClaim(claimId, target.getName())) {
+        if (databaseManager.addMemberToRegion(regionId, target.getName())) {
             String inviteSentMsg = Utils.getMessage("invite.invite-sent", "&aHai invitato %player% al tuo claim!");
             inviteSentMsg = Utils.replacePlaceholders(inviteSentMsg, "%player%", target.getName());
             player.sendMessage(inviteSentMsg);
@@ -185,14 +187,15 @@ public class ClaimCommand implements CommandExecutor, TabCompleter {
     }
 
     private void listClaims(Player player) {
-        int count = databaseManager.getPlayerClaimCount(player.getName());
+        int regionCount = databaseManager.getPlayerRegionCount(player.getName());
+        int chunkCount = databaseManager.getPlayerChunkCount(player.getName());
 
-        if (count == 0) {
+        if (regionCount == 0) {
             player.sendMessage(Utils.colorize("&cNon hai ancora creato nessun claim!"));
             return;
         }
 
-        player.sendMessage(Utils.colorize("&aHai &f" + count + "&a claim."));
+        player.sendMessage(Utils.colorize("&aHai &f" + regionCount + "&a claim con un totale di &f" + chunkCount + "&a chunks."));
         player.sendMessage(Utils.colorize("&aUtilizza &f/claim info &aper vedere informazioni sul claim in cui ti trovi."));
     }
 
@@ -202,7 +205,7 @@ public class ClaimCommand implements CommandExecutor, TabCompleter {
         player.sendMessage(Utils.colorize("&f/claim unclaim &7- Rimuovi il claim dal chunk in cui ti trovi"));
         player.sendMessage(Utils.colorize("&f/claim info &7- Mostra informazioni sul claim in cui ti trovi"));
         player.sendMessage(Utils.colorize("&f/claim invite <giocatore> &7- Invita un giocatore al tuo claim"));
-        player.sendMessage(Utils.colorize("&f/claim list &7- Mostra il numero dei tuoi claim"));
+        player.sendMessage(Utils.colorize("&f/claim list &7- Mostra informazioni sui tuoi claim"));
         player.sendMessage(Utils.colorize("&f/claim help &7- Mostra questo messaggio di aiuto"));
     }
 

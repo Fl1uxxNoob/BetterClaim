@@ -6,11 +6,11 @@ database:
 
 # Impostazioni generali
 settings:
-  max-claims: 2
+  max-claims: 2  # Numero massimo di chunk per regione
   claim-message: "&aHai claimato questo chunk con successo!"
   claim-already-exists: "&cQuesto chunk è già stato claimato!"
-  max-claims-reached: "&cHai raggiunto il limite massimo di claim (%max%)!"
-  claim-removed: "&aHai rimosso questo claim con successo!"
+  max-claims-reached: "&cHai raggiunto il limite massimo di chunk (%max%) per la tua regione!"
+  claim-removed: "&aHai rimosso questo chunk con successo!"
   not-your-claim: "&cQuesto claim non ti appartiene!"
   no-claim-here: "&cNon c'è nessun claim in questo chunk!"
 
