@@ -1,36 +1,95 @@
-# Configurazione BetterClaim
+# BetterClaim Configuration File
+# For support, visit: https://github.com/fliuxx/BetterClaim
 
-# Database
+# Database settings
 database:
-  filename: "claims.db"
-
-# Impostazioni generali
-settings:
-  max-claims: 2  # Numero massimo di chunk per regione
-  claim-message: "&aHai claimato questo chunk con successo!"
-  claim-already-exists: "&cQuesto chunk è già stato claimato!"
-  max-claims-reached: "&cHai raggiunto il limite massimo di chunk (%max%) per la tua regione!"
-  claim-removed: "&aHai rimosso questo chunk con successo!"
-  not-your-claim: "&cQuesto claim non ti appartiene!"
-  no-claim-here: "&cNon c'è nessun claim in questo chunk!"
-
-# Impostazioni inviti
-invite:
-  invite-sent: "&aHai invitato %player% al tuo claim!"
-  invite-received: "&a%player% ti ha invitato al suo claim!"
-  player-not-found: "&cIl giocatore non è online!"
-  already-invited: "&cQuesto giocatore è già stato invitato a questo claim!"
-  player-added: "&aHai aggiunto %player% al tuo claim!"
-
-# Protezioni
-protection:
-  enable-block-break: true
-  enable-block-place: true
-  enable-interact: true
-  enable-explosion: true
-  protection-message: "&cNon hai il permesso per fare questo in questo claim!"
-
-# Permessi
-permissions:
-  admin-bypass: "betterclaim.admin.bypass"
-  claims-unlimited: "betterclaim.claims.unlimited"
+  type: sqlite
+  filename: claims.db
+  
+# Claim settings
+claim:
+  # Maximum number of chunks per claim
+  max-chunks-per-claim: 100
+  # Maximum number of claims per player
+  max-claims-per-player: 1
+  # Require claims to be adjacent (expandable only)
+  require-adjacent: true
+  # Show claim borders when entering/leaving
+  show-borders: true
+  # Border particle effect
+  border-particle: REDSTONE
+  # Auto-save interval in minutes
+  auto-save-interval: 5
+  
+# Default claim flags
+default-flags:
+  pvp: false
+  mob-spawning: true
+  mob-damage: true
+  explosions: false
+  fire-spread: false
+  lava-flow: false
+  water-flow: true
+  item-pickup: false
+  block-break: false
+  block-place: false
+  container-access: false
+  door-access: false
+  button-access: false
+  lever-access: false
+  pressure-plate-access: false
+  redstone-access: false
+  entity-interact: false
+  animal-damage: false
+  
+# Trust levels and their permissions
+trust-levels:
+  trusted:
+    - block-break
+    - block-place
+    - container-access
+    - door-access
+    - button-access
+    - lever-access
+    - item-pickup
+  moderator:
+    - block-break
+    - block-place
+    - container-access
+    - door-access
+    - button-access
+    - lever-access
+    - pressure-plate-access
+    - redstone-access
+    - entity-interact
+    - item-pickup
+  admin:
+    - block-break
+    - block-place
+    - container-access
+    - door-access
+    - button-access
+    - lever-access
+    - pressure-plate-access
+    - redstone-access
+    - entity-interact
+    - animal-damage
+    - item-pickup
+    
+# GUI settings
+gui:
+  # GUI title prefixes
+  titles:
+    claim-main: "&6&lClaim Management"
+    claim-flags: "&6&lClaim Flags"
+    claim-trust: "&6&lClaim Trust"
+    admin-main: "&c&lAdmin Panel"
+    
+# Performance settings
+performance:
+  # Cache size for claims
+  cache-size: 1000
+  # Cache expiration time in minutes
+  cache-expiration: 30
+  # Async operations
+  async-saves: true

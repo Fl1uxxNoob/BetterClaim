@@ -1,18 +1,34 @@
 name: BetterClaim
-version: '1.0'
+version: 1.0.0
 main: net.fliuxx.betterClaim.BetterClaim
-api-version: '1.20'
-authors: [ Fl1uxxNoob ]
-description: Plugin per i claim
+api-version: 1.20
+author: Fl1uxxNoob
+description: A comprehensive chunk-based land claiming plugin
+website: https://github.com/Fl1uxxNoob/BetterClaim
+
 commands:
   claim:
-    description: Comando principale per gestire i claim
-    aliases: [betterclaim]
-    usage: /claim <claim|unclaim|info|invite|list|help>
+    description: Claim management commands
+    usage: /claim <help|create|delete|trust|untrust|flag|info|list>
+    permission: betterclaim.claim
+  claimadmin:
+    description: Administrative claim commands
+    usage: /claimadmin <help|list|delete|teleport|info>
+    permission: betterclaim.admin
+
 permissions:
-  betterclaim.admin.bypass:
-    description: Permette di bypassare la protezione dei claim
+  betterclaim.*:
+    description: Gives access to all BetterClaim commands
+    children:
+      betterclaim.claim: true
+      betterclaim.admin: true
+      betterclaim.bypass: true
+  betterclaim.claim:
+    description: Allows basic claim operations
+    default: true
+  betterclaim.admin:
+    description: Allows administrative claim operations
     default: op
-  betterclaim.claims.unlimited:
-    description: Permette di avere un numero illimitato di claim
+  betterclaim.bypass:
+    description: Allows bypassing claim protection
     default: op

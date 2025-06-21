@@ -1,0 +1,96 @@
+# BetterClaim Messages File
+# Use & for color codes
+# Placeholders: {player}, {claim}, {chunk}, {flag}, {trust_level}, {x}, {z}
+
+# General messages
+prefix: "&8[&6BetterClaim&8]&r "
+no-permission: "&cYou don't have permission to use this command."
+player-only: "&cThis command can only be used by players."
+invalid-usage: "&cInvalid usage. Use &e{usage}&c for help."
+reload-success: "&aConfiguration reloaded successfully."
+
+# Claim messages
+claim:
+  created: "&aSuccessfully claimed chunk at &e{x}, {z}&a!"
+  deleted: "&aSuccessfully deleted your claim."
+  already-claimed: "&cThis chunk is already claimed by &e{player}&c."
+  already-own-chunk: "&cYou already own this chunk."
+  not-claimed: "&cThis chunk is not claimed."
+  not-your-claim: "&cThis chunk is not claimed by you."
+  no-claims: "&cYou don't have any claims."
+  max-claims-reached: "&cYou have reached the maximum number of claims ({max})."
+  max-chunks-reached: "&cYou have reached the maximum number of chunks per claim ({max})."
+  must-be-adjacent: "&cNew chunks must be adjacent to your existing claim."
+  cannot-claim-here: "&cYou cannot claim this chunk."
+  enter: "&aEntering claim: &e{claim} &aowned by &e{player}"
+  leave: "&7Leaving claim: &e{claim}"
+  expand:
+    no-claims: "&cYou must have at least one claim to expand."
+    not-adjacent: "&cThis chunk is not adjacent to any of your claims."
+    max-chunks: "&cThis claim has reached the maximum size ({max} chunks)."
+    success: "&aSuccessfully expanded claim &e{claim} &ato include chunk &e{x}, {z}&a!"
+    failed: "&cFailed to expand claim. Please try again."
+  
+# Trust messages
+trust:
+  added: "&aSuccessfully added &e{player} &aas &e{trust_level} &ato your claim."
+  removed: "&aSuccessfully removed &e{player} &afrom your claim."
+  already-trusted: "&c{player} is already trusted in your claim."
+  not-trusted: "&c{player} is not trusted in your claim."
+  cannot-trust-self: "&cYou cannot trust yourself."
+  trust-level-updated: "&aUpdated &e{player}&a's trust level to &e{trust_level}&a."
+  
+# Protection messages
+protection:
+  block-break: "&cYou cannot break blocks in this claim."
+  block-place: "&cYou cannot place blocks in this claim."
+  container-access: "&cYou cannot access containers in this claim."
+  door-access: "&cYou cannot use doors in this claim."
+  button-access: "&cYou cannot use buttons in this claim."
+  lever-access: "&cYou cannot use levers in this claim."
+  pressure-plate-access: "&cYou cannot use pressure plates in this claim."
+  redstone-access: "&cYou cannot interact with redstone in this claim."
+  entity-interact: "&cYou cannot interact with entities in this claim."
+  animal-damage: "&cYou cannot damage animals in this claim."
+  item-pickup: "&cYou cannot pick up items in this claim."
+  pvp: "&cPvP is disabled in this claim."
+  
+# Flag messages
+flag:
+  updated: "&aFlag &e{flag} &ahas been set to &e{value}&a."
+  invalid: "&cInvalid flag: &e{flag}&c."
+  
+# Admin messages
+admin:
+  claim-deleted: "&aSuccessfully deleted claim owned by &e{player}&a."
+  claim-info: "&6Claim Info:\n&7Owner: &e{player}\n&7Chunks: &e{chunks}\n&7Created: &e{created}"
+  teleported: "&aTeleported to claim owned by &e{player}&a."
+  no-claims-found: "&cNo claims found for player &e{player}&c."
+  
+# Error messages
+error:
+  database: "&cDatabase error occurred. Please contact an administrator."
+  player-not-found: "&cPlayer &e{player} &cnot found."
+  claim-not-found: "&cClaim not found."
+  internal: "&cAn internal error occurred. Please try again."
+  
+# Command help
+help:
+  claim:
+    - "&6&lBetterClaim Commands:"
+    - "&e/claim create &7- Claim the current chunk"
+    - "&e/claim expand &7- Expand claim to current chunk (must be adjacent)"
+    - "&e/claim delete &7- Delete your claim"
+    - "&e/claim info &7- Show claim information"
+    - "&e/claim list &7- List your claims"
+    - "&e/claim trust <player> [level] &7- Trust a player"
+    - "&e/claim untrust <player> &7- Untrust a player"
+    - "&e/claim flag <flag> <value> &7- Set a claim flag"
+    - "&e/claim gui &7- Open claim management GUI"
+  admin:
+    - "&c&lBetterClaim Admin Commands:"
+    - "&e/claimadmin list [player] &7- List claims"
+    - "&e/claimadmin delete <player> &7- Delete a claim"
+    - "&e/claimadmin info <player> &7- Show claim info"
+    - "&e/claimadmin teleport <player> &7- Teleport to claim"
+    - "&e/claimadmin gui &7- Open admin GUI"
