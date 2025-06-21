@@ -1,4 +1,6 @@
 # BetterClaim - Advanced Minecraft Land Claiming Plugin
+![version](https://img.shields.io/badge/version-1.0.0-blue.svg)
+![MC version](https://img.shields.io/badge/MC-1.20+-brightgreen.svg)
 
 A comprehensive Paper 1.20+ plugin for chunk-based land claiming with advanced GUI management, hierarchical permissions, and database persistence.
 
